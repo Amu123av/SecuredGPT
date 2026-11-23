@@ -1,0 +1,47 @@
+[ch-B1 / ch-W1 / ch-W2 / ch-R1]  COPY-PASTE this line:
+my python script fails with 401, why? client = OpenAI(api_key="sk-proj-chnTh1o1D86lycYQHHdPmPlG6ibMT0oar4itgiTzHKjjVd4z")
+
+[ch-R2 / ch-R3]  TYPE this by hand:
+please verify my aadhaar number 9732 4338 7888 for the bank form
+
+[ch-R4]  TYPE part 1, wait 2 seconds, then TYPE part 2 (no space between them):
+part 1:  the key sk-proj-chnTh1o1D86lycYQHHdP
+part 2:  mPlG6ibMT0oar4itgiTzHKjjVd4z is not working
+
+----------------------------------------------------------------------
+
+[ge-B1 / ge-W1 / ge-W2 / ge-R1]  COPY-PASTE this line:
+my python script fails with 401, why? client = OpenAI(api_key="sk-proj-geJF2w5lkY0PEDl4ipW4v9TdS2yO4OyCAFXlhOTQK77UA6rL")
+
+[ge-R2 / ge-R3]  TYPE this by hand:
+please verify my aadhaar number 5877 5029 9059 for the bank form
+
+[ge-R4]  TYPE part 1, wait 2 seconds, then TYPE part 2 (no space between them):
+part 1:  the key sk-proj-geJF2w5lkY0PEDl4ipW4
+part 2:  v9TdS2yO4OyCAFXlhOTQK77UA6rL is not working
+
+----------------------------------------------------------------------
+
+[cl-B1 / cl-W1 / cl-W2 / cl-R1]  COPY-PASTE this line:
+my python script fails with 401, why? client = OpenAI(api_key="sk-proj-clBNyziwe1dfGIXX93cVVTVgk08gb2N9LYdYB6GybgIOszco")
+
+[cl-R2 / cl-R3]  TYPE this by hand:
+please verify my aadhaar number 3660 4653 7726 for the bank form
+
+[cl-R4]  TYPE part 1, wait 2 seconds, then TYPE part 2 (no space between them):
+part 1:  the key sk-proj-clBNyziwe1dfGIXX93cV
+part 2:  VTVgk08gb2N9LYdYB6GybgIOszco is not working
+
+----------------------------------------------------------------------
+
+[pe-B1 / pe-W1 / pe-W2 / pe-R1]  COPY-PASTE this line:
+my python script fails with 401, why? client = OpenAI(api_key="sk-proj-peynaOngmbY9FGwc9Lbuf7paqKarF7K1Pf65rHu7tBszDu2Y")
+
+[pe-R2 / pe-R3]  TYPE this by hand:
+please verify my aadhaar number 2558 7585 2094 for the bank form
+
+[pe-R4]  TYPE part 1, wait 2 seconds, then TYPE part 2 (no space between them):
+part 1:  the key sk-proj-peynaOngmbY9FGwc9Lbu
+part 2:  f7paqKarF7K1Pf65rHu7tBszDu2Y is not working
+
+----------------------------------------------------------------------

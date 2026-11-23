@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { width: 320px; font-family: 'Segoe UI', sans-serif; margin: 0; background: #f8f9fa; }
+        .header { background: #0d47a1; color: white; padding: 16px; text-align: center; }
+        .header h2 { margin: 0 0 2px 0; font-size: 18px; }
+        .status { padding: 14px 16px; }
+        label { display: block; font-size: 12px; font-weight: 600; color: #444; margin: 10px 0 3px; }
+        input, select { width: 100%; box-sizing: border-box; padding: 7px 8px; font-size: 14px; border: 1px solid #bbb; border-radius: 6px; }
+        .row { display: flex; gap: 6px; margin-top: 12px; }
+        button { flex: 1; padding: 8px; font-size: 13px; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; background: #0d47a1; color: #fff; }
+        button.secondary { background: #e0e0e0; color: #222; }
+        button.danger { background: #c62828; }
+        #msg { font-size: 12px; color: #2e7d32; min-height: 16px; margin-top: 8px; }
+        .footer { font-size: 11px; color: #888; text-align: center; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>🛡️ Secure-GPT</h2>
+        <div style="font-size:12px;">Response-mode study build</div>
+    </div>
+    <div class="status">
+        <label for="mode">Response mode</label>
+        <select id="mode">
+            <option value="monitor">Monitor (log only)</option>
+            <option value="warn">Warn</option>
+            <option value="block">Block</option>
+            <option value="redact">Redact</option>
+        </select>
+        <label for="pid">Participant ID (assigned by researcher)</label>
+        <input id="pid" placeholder="e.g. P01" autocomplete="off">
+        <label for="task">Task ID</label>
+        <input id="task" placeholder="e.g. A1" autocomplete="off">
+        <div class="row"><button id="save">Save</button></div>
+        <div class="row"><button id="runner">Open study runner</button></div>
+        <div class="row">
+            <button id="exportJson" class="secondary">Export JSON</button>
+            <button id="exportCsv" class="secondary">Export CSV</button>
+        </div>
+        <div class="row"><button id="clear" class="danger">Clear log</button></div>
+        <div id="msg"></div>
+    </div>
+    <div class="footer">release 58.2 &middot; log stores categories and timings only, never prompt text</div>
+    <script src="popup.js"></script>
+</body>
+</html>

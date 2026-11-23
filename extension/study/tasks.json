@@ -1,0 +1,338 @@
+[
+ {
+  "id": "A1",
+  "set": "A",
+  "kind": "sensitive",
+  "category": "api_key",
+  "scenario": "Your Python script that calls the OpenAI API stopped working. Get the assistant to help you fix it.",
+  "material": "import openai\nclient = openai.OpenAI(api_key=\"sk-proj-n7kbPZxZxSwJKjRMiGG2DuRSCY6Wu7VOpyhP8HmJ1XlwIjk1i_DBeoMl\")\nresp = client.chat.completions.create(model=\"gpt-4o-mini\", messages=[{\"role\": \"user\", \"content\": \"hi\"}])\nprint(resp.choices[0].message.content)\n\nTraceback (most recent call last):\nopenai.AuthenticationError: Error code: 401 - incorrect API key provided",
+  "expected": {
+   "flagged": true,
+   "category": "API Key Detected",
+   "redact_clean": true,
+   "spans": 2
+  }
+ },
+ {
+  "id": "A2",
+  "set": "A",
+  "kind": "sensitive",
+  "category": "db_string",
+  "scenario": "The attendance app cannot connect to its database. Ask the assistant what is wrong.",
+  "material": "# settings.py\nDATABASES = {\"default\": dj_database_url.parse(\"postgresql://app_user:vOxGsGy0EDn00y@pg-prod-02.acmecorp.internal:5432/attendance\")}\n\ndjango.db.utils.OperationalError: connection to server at \"pg-prod-02.acmecorp.internal\" (10.4.2.17), port 5432 failed: FATAL: password authentication failed for user \"app_user\"",
+  "expected": {
+   "flagged": true,
+   "category": "Credentials in Connection String",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "A3",
+  "set": "A",
+  "kind": "sensitive",
+  "category": "card",
+  "scenario": "You were charged twice for a course subscription. Ask the assistant to draft a short complaint e-mail to your bank.",
+  "material": "Transaction details\nCard used: 4727 4390 7498 2350\nMerchant: LearnHub Online Courses\nAmount: Rs 2,499 (charged twice on 12 October)\nPlease draft a polite e-mail asking for a refund of the duplicate charge.",
+  "expected": {
+   "flagged": true,
+   "category": "Payment Card Number Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "A4",
+  "set": "A",
+  "kind": "sensitive",
+  "category": "password",
+  "scenario": "A teammate sent you the login for the shared GPU server. Ask the assistant how to connect to it with SSH from Windows.",
+  "material": "Lab GPU server (do not share outside the group)\nhost: gpu-lab-3.cse.local\nusername: research\npassword: qCViqTMBr8wp\nport: 22",
+  "expected": {
+   "flagged": true,
+   "category": "Password Assignment Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "A5",
+  "set": "A",
+  "kind": "clean",
+  "category": "traceback",
+  "scenario": "Your script crashes with the error below. Ask the assistant to explain it.",
+  "material": "Traceback (most recent call last):\n  File \"report.py\", line 42, in build_summary\n    total = totals_by_region[order[\"region_code\"]]\nKeyError: 'NE-07'\n(the order id was 3f2c9a1e-8b4d-4c6a-9e2f-7a1b5c3d9e08)",
+  "expected": {
+   "flagged": false,
+   "category": null,
+   "redact_clean": null,
+   "spans": 0
+  }
+ },
+ {
+  "id": "A6",
+  "set": "A",
+  "kind": "trap",
+  "category": "placeholder_conn",
+  "scenario": "You are reading a tutorial. Ask the assistant to explain each part of the connection string it uses.",
+  "material": "From the tutorial \"Getting started with SQLAlchemy\":\nengine = create_engine(\"postgresql://user:password@localhost:5432/mydb\")\nReplace user, password and mydb with your own values before running the script.",
+  "expected": {
+   "flagged": true,
+   "category": "Credentials in Connection String",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "B1",
+  "set": "B",
+  "kind": "sensitive",
+  "category": "api_key",
+  "scenario": "Your backup script cannot upload to S3. Ask the assistant why.",
+  "material": "~/.aws/credentials\n[default]\naws_access_key_id = AKIA707BM3ISKJZTNQWM\naws_secret_access_key = XGLIynnCG0lb7frbZBNIZpk1GizXOyskvQ1Wrgxb\nregion = ap-south-1\n\nbotocore.exceptions.ClientError: An error occurred (AccessDenied) when calling the PutObject operation",
+  "expected": {
+   "flagged": true,
+   "category": "API Key Detected",
+   "redact_clean": true,
+   "spans": 2
+  }
+ },
+ {
+  "id": "B2",
+  "set": "B",
+  "kind": "sensitive",
+  "category": "service_token",
+  "scenario": "The payment page of your project shows an error. Ask the assistant to help you debug it.",
+  "material": ".env\nSTRIPE_SECRET_KEY=sk_live_KC7TGvmlWsgnDmTpevmglEKj\nSTRIPE_WEBHOOK_URL=/api/stripe/webhook\n\nError: No such price: 'price_basic_monthly'; a similar object exists in test mode, but a live mode key was used",
+  "expected": {
+   "flagged": true,
+   "category": "API Key Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "B3",
+  "set": "B",
+  "kind": "sensitive",
+  "category": "national_id",
+  "scenario": "Your landlord asked for your KYC details in a formal letter. Ask the assistant to write the letter.",
+  "material": "Name: Rohan Mehta\nAadhaar: 4716 3880 7224\nPAN: OPGPU1394Q\nAddress: Flat 304, Sector 21, Mohali\nWrite a short formal letter submitting these details for the rental agreement.",
+  "expected": {
+   "flagged": true,
+   "category": "National ID Detected",
+   "redact_clean": true,
+   "spans": 2
+  }
+ },
+ {
+  "id": "B4",
+  "set": "B",
+  "kind": "sensitive",
+  "category": "phone_list",
+  "scenario": "You coordinate a parents meeting. Ask the assistant to write a WhatsApp reminder for these parents.",
+  "material": "Parents to remind (meeting on Saturday, 10 am):\nMrs Kaur - 6339702699\nMr Verma - 8703629934\nMrs Nair - 6406294467\nMr Singh - 8222000288",
+  "expected": {
+   "flagged": true,
+   "category": "Bulk Personal Data Leak",
+   "redact_clean": true,
+   "spans": 4
+  }
+ },
+ {
+  "id": "B5",
+  "set": "B",
+  "kind": "clean",
+  "category": "sql",
+  "scenario": "Ask the assistant to make this SQL query faster.",
+  "material": "SELECT student_id, course_code, AVG(assignment_score) AS avg_score\nFROM assignment_submissions\nWHERE submitted_at >= '2026-01-01'\nGROUP BY student_id, course_code\nHAVING AVG(assignment_score) > 70\nORDER BY avg_score DESC;",
+  "expected": {
+   "flagged": false,
+   "category": null,
+   "redact_clean": null,
+   "spans": 0
+  }
+ },
+ {
+  "id": "B6",
+  "set": "B",
+  "kind": "trap",
+  "category": "placeholder_key",
+  "scenario": "You are setting up a project from its README. Ask the assistant to explain the setup steps.",
+  "material": "README.md - Setup\n1. Copy .env.example to .env\n2. Set OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (replace with your own key)\n3. Run: npm install && npm run dev",
+  "expected": {
+   "flagged": true,
+   "category": "API Key Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "C1",
+  "set": "C",
+  "kind": "sensitive",
+  "category": "jwt",
+  "scenario": "Your API call returns 403. Ask the assistant to help you find out why.",
+  "material": "curl -X GET https://api.campus.example/v1/grades \\\n  -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiAiMjU5ODU3MCIsICJyb2xlIjogImFkbWluIiwgImlhdCI6IDE3Nzc3MzE3MDR9.tG_x9UzPxM5VhiSG664eQv0A60T-5JURplekp45kz-9\"\n\n{\"error\": \"forbidden\", \"message\": \"token scope does not include grades:read\"}",
+  "expected": {
+   "flagged": true,
+   "category": "JSON Web Token Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "C2",
+  "set": "C",
+  "kind": "sensitive",
+  "category": "db_string",
+  "scenario": "Your Node.js app cannot reach MongoDB Atlas. Ask the assistant to help.",
+  "material": "const uri = \"mongodb+srv://admin:9Ra4eH8ltMOWY@cluster0.rz7z4.mongodb.net/hostel?retryWrites=true\";\nawait mongoose.connect(uri);\n\nMongoServerSelectionError: connection timed out",
+  "expected": {
+   "flagged": true,
+   "category": "Credentials in Connection String",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "C3",
+  "set": "C",
+  "kind": "sensitive",
+  "category": "email_list",
+  "scenario": "Ask the assistant to write a reminder e-mail to the students below about the lab submission deadline.",
+  "material": "Students who have not submitted Lab 4:\naditi.sharma49@example.edu\nkaran.malhotra49@example.edu\nsimran.gill58@example.edu\nvivek.rao18@example.edu",
+  "expected": {
+   "flagged": true,
+   "category": "Bulk Personal Data Leak",
+   "redact_clean": true,
+   "spans": 4
+  }
+ },
+ {
+  "id": "C4",
+  "set": "C",
+  "kind": "sensitive",
+  "category": "password",
+  "scenario": "You want a printable card for hostel guests with the Wi-Fi details. Ask the assistant to design the text for it.",
+  "material": "Wi-Fi for guests\nNetwork: Hostel-Block-C\nwifi password = xIJ1Bwz4792\nValid till 31 December",
+  "expected": {
+   "flagged": true,
+   "category": "Password Assignment Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "C5",
+  "set": "C",
+  "kind": "clean",
+  "category": "summary",
+  "scenario": "Ask the assistant to summarise this paragraph in two sentences.",
+  "material": "Proof of Stake replaces the energy-intensive mining of Proof of Work with validators who lock up tokens as collateral. Validators are chosen to propose blocks in proportion to their stake, and misbehaviour is punished by slashing part of that stake. This design reduces energy use dramatically, but critics argue that it can concentrate influence among the largest holders.",
+  "expected": {
+   "flagged": false,
+   "category": null,
+   "redact_clean": null,
+   "spans": 0
+  }
+ },
+ {
+  "id": "C6",
+  "set": "C",
+  "kind": "trap",
+  "category": "long_identifier",
+  "scenario": "Ask the assistant to explain the encryption setting described below.",
+  "material": "My pandas column avg_weekly_signups_2025_q1 turns into NaN after this merge. Why does that happen and how do I fix it?\ndf = signups.merge(regions, on=\"region_id\", how=\"left\")",
+  "expected": {
+   "flagged": true,
+   "category": "High Entropy String",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "D1",
+  "set": "D",
+  "kind": "sensitive",
+  "category": "api_key",
+  "scenario": "Your chatbot web page gets no reply from the API. Ask the assistant to fix the code.",
+  "material": "fetch(\"https://api.openai.com/v1/chat/completions\", {\n  method: \"POST\",\n  headers: { \"Content-Type\": \"application/json\", \"Authorization\": \"Bearer sk-zTqc4i6FwQKfxLM55aZZGQBiZbgQgHJilHpFROhFLZgxMbyG\" },\n  body: JSON.stringify({ model: \"gpt-4o-mini\", messages: [{ role: \"user\", content: question }] })\n}).then(r => r.json()).then(d => console.log(d.choices[0].message.content));\n// Console: TypeError: Cannot read properties of undefined (reading '0')",
+  "expected": {
+   "flagged": true,
+   "category": "API Key Detected",
+   "redact_clean": true,
+   "spans": 2
+  }
+ },
+ {
+  "id": "D2",
+  "set": "D",
+  "kind": "sensitive",
+  "category": "password",
+  "scenario": "You need to deploy to the college server. Ask the assistant to write the deployment commands.",
+  "material": "Server access shared by the project guide:\nIP: 172.16.40.12\nusername: deploy\npassword is TaVFk1wSSZ0X0C\nDeploy the Flask app in /srv/placement-portal and restart gunicorn.",
+  "expected": {
+   "flagged": true,
+   "category": "Password Assignment Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "D3",
+  "set": "D",
+  "kind": "sensitive",
+  "category": "card",
+  "scenario": "Ask the assistant to fill in the booking summary for your conference travel reimbursement.",
+  "material": "Flight booking - reimbursement claim\nPassenger: Neha Arora\nRoute: IXC to BLR, 14 Nov\nPaid with card 5327 9837 2886 1073\nAmount: Rs 6,840\nWrite a one-paragraph reimbursement request to the department office.",
+  "expected": {
+   "flagged": true,
+   "category": "Payment Card Number Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ },
+ {
+  "id": "D4",
+  "set": "D",
+  "kind": "sensitive",
+  "category": "email_list",
+  "scenario": "Ask the assistant to turn these customer contacts into a neat table.",
+  "material": "Leads from the startup fair:\nArjun Bedi - arjun.bedi@example.com - 9839666765\nMegha Joshi - megha.j@example.org - 8080228633\nTarun Pal - tarun@example.net - 6697776189",
+  "expected": {
+   "flagged": true,
+   "category": "Bulk Personal Data Leak",
+   "redact_clean": true,
+   "spans": 6
+  }
+ },
+ {
+  "id": "D5",
+  "set": "D",
+  "kind": "clean",
+  "category": "code_review",
+  "scenario": "Ask the assistant to review this function and suggest improvements.",
+  "material": "def calculateMonthlyInvoiceTotals(orderHistory, regionCode):\n    totals = {}\n    for order in orderHistory:\n        if order[\"region\"] == regionCode:\n            month = order[\"date\"][:7]\n            totals[month] = totals.get(month, 0) + order[\"amount\"]\n    return totals",
+  "expected": {
+   "flagged": false,
+   "category": null,
+   "redact_clean": null,
+   "spans": 0
+  }
+ },
+ {
+  "id": "D6",
+  "set": "D",
+  "kind": "trap",
+  "category": "math_long_number",
+  "scenario": "A friend sent you an encoded message. Ask the assistant to decode it.",
+  "material": "My calculator shows 30! = 265252859812191058636308480000000. How is this computed by hand, and why does it end in so many zeros?",
+  "expected": {
+   "flagged": true,
+   "category": "Long Secret Number Detected",
+   "redact_clean": true,
+   "spans": 1
+  }
+ }
+]
